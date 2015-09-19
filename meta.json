@@ -13,9 +13,9 @@
     //Required. Outputs the module emits.
     "outputs": [
         {
-            "id": "subwaystatus",
+            "id": "statusmessage",
             "title":"Subway Status",
-            "type":"array"
+            "type":"string"
         }
     ],
     "title": "jsadwith: Subway Misery" /* Required.A display name for the module */
