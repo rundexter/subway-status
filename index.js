@@ -24,7 +24,7 @@ module.exports = {
 
       response.push({
         subwayline: subwayline,
-        status: subwaystatus,
+        subwaystatus: subwaystatus,
         mtalink: 'http://mta.info',
         googlemapslink: 'http://gmaps.com'
       });
