@@ -24,12 +24,12 @@ module.exports = {
         content = '';
 
       if (subwaystatus == 'GOOD SERVICE') {
-        content = "Today's a good day - you might get in on time. We found no MTA issues on your line.\n" +
+        content = "Today's a good day - you might get in on time. We found no MTA issues on your line. " +
           "http://m.mta.info/mt/www.mta.info?un_jtt_v_ifnojs=Subway";
       } else {
         content =
         "Yea, you're gonna be late again, and your boss is gonna give you that look. We found " + subwaystatus.toLowerCase() +
-        " on your line. See if Google can save you...\n http://maps.google.com";
+        " on your line. See if Google can save you... http://maps.google.com";
       }
 
       response.push({

@@ -14,7 +14,7 @@
     "outputs": [
         {
             "id": "statusmessage",
-            "title":"Subway Status",
+            "title":"Subway Status Message",
             "type":"string"
         }
     ],
