@@ -32,6 +32,8 @@ module.exports = {
         " on your line. See if Google can save you... http://maps.google.com";
       }
 
+      content = "blah";
+
       response.push({
         subwayline: subwayline,
         subwaystatus: subwaystatus,
