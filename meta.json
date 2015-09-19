@@ -4,25 +4,19 @@
 {
     //Required. Inputs the module expects.
     "inputs": [
-        //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From",
+            "id": "subwayline",
+            "title":"Subway Line",
             "type":"string"
         }
-        */
     ],
     //Required. Outputs the module emits.
     "outputs": [
-      //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From",
+            "id": "subwaystatus",
+            "title":"Subway Status",
             "type":"array"
         }
-      */
     ],
     "title": "jsadwith: Subway Misery" /* Required.A display name for the module */
 }
