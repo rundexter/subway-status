@@ -28,11 +28,9 @@ module.exports = {
           "http://m.mta.info/mt/www.mta.info?un_jtt_v_ifnojs=Subway";
       } else {
         content =
-        "Yea, you're gonna be late again, and your boss is gonna give you that look. We found " + subwaystatus.toLowerCase() +
+        "Yea, you're gonna be late again. We found " + subwaystatus.toLowerCase() +
         " on your line. See if Google can save you... http://maps.google.com";
       }
-
-      content = "blah";
 
       response.push({
         subwayline: subwayline,
