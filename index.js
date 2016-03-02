@@ -34,7 +34,7 @@ module.exports = {
         //
 
         promises.push(
-            q.ninvoke(self, 'getLineStatus', hostx, pathx, subwayline)
+            q.ninvoke(self, 'getLineStatus', hostx, pathx, subwayline).timeout(5000, 'Timed out checking '+subwayline)
         );
     });
 
@@ -51,17 +51,16 @@ module.exports = {
                         "http://m.mta.info/mt/www.mta.info?un_jtt_v_ifnojs=Subway";
                 } else {
                     content =
-                    "Yea, you're gonna be late again. We found " + data.status.toLowerCase() + " on the " + data.line + " line.";
+                    "Yea, you're gonna be late again. We found " + data.status.join(',').toLowerCase() + " on the " + data.line + " line.";
                 }
 
                 items.push({
                     subwayline    : data.subwayline,
-                    subwaystatus  : data.status,
+                    subwaystatus  : data.status.join(','),
                     statusmessage : content,
                 });
             });
 
-            console.log(items.length);
             return items;
         })
         .then(self.complete.bind(self, items))
@@ -74,7 +73,10 @@ module.exports = {
    *
    */
   getLineStatus: function (hostx, pathx, subwayline, callback) {
-      console.log('getLineStatus', hostx, pathx,subwayline);
+      var state = {
+          status: [],
+          line  : subwayline
+      };
 
       // Request an RSS for a Twitter stream
       var request = http.get({
@@ -88,9 +90,14 @@ module.exports = {
 
           // When each item node is completely parsed, buffer its contents
           xml.on('endElement: service > subway > line', function(subwaystatus) {
-              if (subwaystatus.name == subwayline) {
-                  callback(null, { line: subwayline, status: subwaystatus.status });
+              if (subwaystatus.name.toLowerCase().match(subwayline.toLowerCase())) {
+                  state.status.push(subwaystatus.status);
               }
+          });
+
+          xml.on('end', function() {
+             if(!state.status.length) state.status.push('NOT_FOUND');
+             callback(null, state);
           });
       });
   }
