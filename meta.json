@@ -6,7 +6,7 @@
     "inputs": [{
             "id": "subwayline",
             "title":"Subway Line",
-            "description":"The subway line(s) you want to track" 
+            "description":"A comma separated list of the subway line(s) you want to track" 
     }],
     //Required. Outputs the module emits.
     "outputs": [{
