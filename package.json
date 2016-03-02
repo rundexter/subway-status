@@ -1,7 +1,7 @@
 {
   "name": "subway-status",
   "version": "0.0.1",
-  "description": "",
+  "description": "Get the status of a subway line on the NYC MTA",
   "main": "index.js",
   "author": "Run Dexter, Inc",
   "license": "MIT",
@@ -10,15 +10,16 @@
     "feedparser": "^1.1.3",
     "fs": "0.0.2",
     "libxmljs": "^0.14.3",
-    "lodash": "^3.9.3",
+    "lodash": "^3.10.1",
     "needle": "^0.10.0",
     "promise-parser": "0.0.4",
+    "q": "^1.4.1",
     "request": "^2.62.0",
     "xml-parser": "^1.2.1",
     "xml-stream": "^0.4.5"
-  }, 
-  "repository" : {
+  },
+  "repository": {
     "type": "git",
-    "url" : "https://github.com/rundexter/subway-status"
+    "url": "https://github.com/rundexter/subway-status"
   }
 }

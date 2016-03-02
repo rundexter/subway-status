@@ -13,5 +13,6 @@
             "id": "statusmessage",
             "title":"Subway Status Message"
     }],
+    "icon" : "train",
     "title": "NYC MTA Get Status" /* Required.A display name for the module */
 }
