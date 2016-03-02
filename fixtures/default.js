@@ -4,7 +4,7 @@ var _ = require('lodash')
 
 module.exports = _.merge({
     /*
-     * Some default settings.
+     * Some default settings. 
      *
      * You can generally leave this as is for general testing purposes.
      */
@@ -26,7 +26,7 @@ module.exports = _.merge({
             id: 'local_test_step'
             , type: 'module'
             //The test runner will change YOUR_MODULE_NAME to the correct module name
-            , name: 'jsadwith: Subway Misery'
+            , name: 'YOUR_MODULE_NAME'
             , next: []
         }
     }
@@ -47,12 +47,22 @@ module.exports = _.merge({
     }
     , user: {
         /*
-         * Your dexter user settings should go in the env.js file and remain uncommitted.
+         * Your dexter user settings should go in the env.js file and remain uncommitted.  
          * For example:
          *
         profile: {
             id: 1,
             api_key: 'apikeytest'
+        }
+         */
+        /*
+         * You should also add your providers to env.js
+         * Example:
+        providers: {
+            github: {
+                access_token: 'abc123',
+                username: 'foo'
+            }
         }
          */
     }
@@ -63,7 +73,7 @@ module.exports = _.merge({
              */
             input: {
                 //Replace VAR1 with the name of an expected input, and add more inputs as needed.
-                subwayline: 'S'
+                subwayline: 'L'
             }
         }
     }

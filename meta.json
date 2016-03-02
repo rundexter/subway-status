@@ -3,20 +3,15 @@
  */
 {
     //Required. Inputs the module expects.
-    "inputs": [
-        {
+    "inputs": [{
             "id": "subwayline",
             "title":"Subway Line",
-            "type":"string"
-        }
-    ],
+            "description":"The subway line(s) you want to track" 
+    }],
     //Required. Outputs the module emits.
-    "outputs": [
-        {
+    "outputs": [{
             "id": "statusmessage",
-            "title":"Subway Status Message",
-            "type":"string"
-        }
-    ],
-    "title": "jsadwith: Subway Misery" /* Required.A display name for the module */
+            "title":"Subway Status Message"
+    }],
+    "title": "NYC MTA Get Status" /* Required.A display name for the module */
 }

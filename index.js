@@ -1,5 +1,6 @@
-var http = require('http'),
-  XmlStream = require('xml-stream');
+var http = require('http')
+  , XmlStream = require('xml-stream')
+;
 
 module.exports = {
   /**
@@ -9,19 +10,19 @@ module.exports = {
    * @param {AppData} dexter Container for all data used in this workflow.
    */
   run: function (step, dexter) {
+    var subwayline = step.input('subwayline').first()
+      , self       = this
+      , hostx      = "web.mta.info"
+      , pathx      = "/status/serviceStatus.txt"
+    ;
 
-
-    var subwayline = step.input('subwayline').first(),
-      self = this;
-
-    var hostx = "web.mta.info",
-      pathx = "/status/serviceStatus.txt";
 
     //Let the parser grab the data
     self.getLineStatus(hostx, pathx, subwayline, function (subwaystatus) {
 
-      var response = [],
-        content = '';
+      var response = []
+        , content = ''
+      ;
 
       if (subwaystatus == 'GOOD SERVICE') {
         content = "Today's a good day - you might get in on time. We found no MTA issues on your line. " +
@@ -33,9 +34,9 @@ module.exports = {
       }
 
       response.push({
-        subwayline: subwayline,
-        subwaystatus: subwaystatus,
-        statusmessage: content,
+          subwayline    : subwayline,
+          subwaystatus  : subwaystatus,
+          statusmessage : content,
       });
 
       return self.complete(response);
@@ -54,7 +55,6 @@ module.exports = {
       host: hostx,
       path: pathx
     }).on('response', function(response) {
-
       var xml = new XmlStream(response);
 
       // Pass the response as UTF-8 to XmlStream
@@ -63,8 +63,10 @@ module.exports = {
       // When each item node is completely parsed, buffer its contents
       xml.on('endElement: service > subway > line', function(subwaystatus) {
 
+        console.log(subwaystatus, subwayline);
+
         if (subwaystatus.name == subwayline) {
-          callback(subwaystatus.status);
+            callback(subwaystatus.status);
         }
       });
     });
