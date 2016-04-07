@@ -43,20 +43,21 @@ module.exports = {
         .then(function (results) {
             _.each(results, function(data) {
                 var response = []
-                , content  = ''
+                  , content  = ''
+                  , status = _(data.status).uniq().map(_.lowerCase).value().join(',')
                 ;
 
-                if (data.status == 'GOOD SERVICE') {
+                if (status.match(/^good service/i)) {
                     content = "Today's a good day - you might get in on time. We found no MTA issues on the "+data.line+" line. " +
                         "http://m.mta.info/mt/www.mta.info?un_jtt_v_ifnojs=Subway";
                 } else {
                     content =
-                    "Yea, you're gonna be late again. We found " + data.status.join(',').toLowerCase() + " on the " + data.line + " line.";
+                    "Yea, you're gonna be late again. We found " + status + " on the " + data.line + " line.";
                 }
 
                 items.push({
                     subwayline    : data.subwayline,
-                    subwaystatus  : data.status.join(','),
+                    subwaystatus  : status,
                     statusmessage : content,
                 });
             });
